@@ -32,12 +32,12 @@
                             @foreach ($data as $value)
                             <tr>
                                 <td>{{ $value->id }}</td>
-                                <td>{{ $value->role?$value->role->display_name:'暂无'}}</td>
+                                <td>{{ $value->roles?$value->roles[0]->display_name:'暂无'}}</td>
                                 <td>{{ $value->account }}</td>
                                 <td>
-                                    {{--@if(Auth::guard('admin')->user()->can('adminEdit'))     --}}
+                                    @if(Auth::guard('admin')->user()->can('adminEdit'))
                                         <a class="btn btn-bitbucket" href="{{url("/admin/admin/edit".'?nav=3-0&id='."$value->id")}}">修改</a>
-                                    {{--@endif--}}
+                                    @endif
                                     @if(Auth::guard('admin')->user()->can('adminDelete'))
                                         <a class="btn btn-adn" href="{{url("/admin/admin/destroy".'?id='."$value->id")}}">删除</a>
                                     @endif
